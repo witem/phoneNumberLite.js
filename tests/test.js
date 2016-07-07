@@ -1,12 +1,14 @@
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab: */
 
-load("PhoneNumberMetadata.js");
-load("PhoneNumberNormalizer.js")
-load("PhoneNumber.js");
+const phoneNumberLite = require("../");
+
+const print = function(str) {
+  console.log(str);
+}
 
 function IsPlain(dial, expected) {
-  var result = PhoneNumber.IsPlain(dial);
+  var result = phoneNumberLite.isPlain(dial);
   if (result != expected) {
     print(dial + ", expected: " + expected);
     print("got: " + result);
@@ -14,7 +16,7 @@ function IsPlain(dial, expected) {
 }
 
 function Normalize(dial, expected) {
-  var result = PhoneNumberNormalizer.Normalize(dial);
+  var result = phoneNumberLite.normalize(dial);
   if (result != expected) {
     print("expected: " + expected);
     print("got: " + result);
@@ -22,7 +24,7 @@ function Normalize(dial, expected) {
 }
 
 function CantParse(dial, currentRegion) {
-  var result = PhoneNumber.Parse(dial, currentRegion);
+  var result = phoneNumberLite.parse(dial, currentRegion);
   if (result) {
     print("expected: does not parse");
     print("got: " + dial + " " + currentRegion);
@@ -30,7 +32,7 @@ function CantParse(dial, currentRegion) {
 }
 
 function Parse(dial, currentRegion) {
-  var result = PhoneNumber.Parse(dial, currentRegion);
+  var result = phoneNumberLite.parse(dial, currentRegion);
   if (!result) {
     print("expected: parses");
     print("got: " + dial + " " + currentRegion);
@@ -48,7 +50,7 @@ function Test(dial, currentRegion, nationalNumber, region) {
 }
 
 function TestProperties(dial, currentRegion) {
-  var result = PhoneNumber.Parse(dial, currentRegion);
+  var result = phoneNumberLite.parse(dial, currentRegion);
   if (result) {
     var tmp = result.internationalFormat;
     tmp = result.internationalNumber;
@@ -92,6 +94,7 @@ function AllEqual(list, currentRegion) {
   }
 }
 
+console.time('tests');
 // Test whether could a string be a phone number.
 IsPlain(null, false);
 IsPlain("", false);
@@ -271,6 +274,9 @@ Normalize("abcdefghijklmnopqrstuvwxyz", "22233344455566677778889999");
 AllEqual(["01187654321","0411187654321","551187654321","90411187654321","+551187654321"],"BR");
 AllEqual(["011987654321","04111987654321","5511987654321","904111987654321","+5511987654321"],"BR")
 
-IsEqual(PhoneNumberNormalizer.Normalize("123abc", true), "123");
-IsEqual(PhoneNumberNormalizer.Normalize("12345", true), "12345");
-IsEqual(PhoneNumberNormalizer.Normalize("1abcd", false), "12223");
+IsEqual(phoneNumberLite.normalize("123abc", true), "123");
+IsEqual(phoneNumberLite.normalize("12345", true), "12345");
+IsEqual(phoneNumberLite.normalize("1abcd", false), "12223");
+
+console.timeEnd('tests');
+console.log('All tests finished');

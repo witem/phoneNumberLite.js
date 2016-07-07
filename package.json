@@ -1,0 +1,30 @@
+{
+  "name": "phonenumberlite",
+  "version": "0.1.0",
+  "description": "JavaScript library to verify and format phone numbers.",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "make",
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/witem/PhoneNumber.js.git"
+  },
+  "keywords": [
+    "libphonenumber",
+    "phonenumber",
+    "phone",
+    "number",
+    "lite"
+  ],
+  "author": "Kuzmenko Artem <witem.artem@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/witem/PhoneNumber.js/issues"
+  },
+  "homepage": "https://github.com/witem/PhoneNumber.js#readme",
+  "engines":{
+    "node": ">=5.0.0"
+  }
+}

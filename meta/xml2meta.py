@@ -3,6 +3,15 @@ from optparse import OptionParser
 from xml.dom.minidom import parseString
 import re
 import sys
+import logging
+
+logger = logging.getLogger('xml2meta')
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
 
 # parse command line arguments
 use = "Usage: %prog [options] PhoneNumberMetadata.xml"
@@ -44,7 +53,9 @@ def pattern(x, type):
 def format(x):
     if len(x) == 0:
         return ""
-    assert len(x) == 1
+    if len(x) != 1:
+        logger.info('Skipped availableFormats')
+    # assert len(x) == 1
     result = []
     for numberFormat in x[0].getElementsByTagName("numberFormat"):
         attr = numberFormat.attributes
@@ -114,7 +125,7 @@ if options.tests:
         print(example)
     sys.exit()
 
-print("const PHONE_NUMBER_META_DATA = {");
+print("module.exports = {");
 for cc in map:
     entry = map[cc]
     if len(entry) > 1:
