@@ -1,7 +1,8 @@
-# PhoneNumber.js
+cloned from https://github.com/andreasgal/PhoneNumber.js
+# PhoneNumberLite.js
 
 
-PhoneNumber.js is a JavaScript library to verify and format phone numbers.
+Is a JavaScript library to verify and format phone numbers.
 It is similar in purpose to Google's libphonenumber library, with the main difference
 that Google's code is some incredibly ugly spaghetti code that was cross-compiled
 from Java and uses around 10MB of memory.
