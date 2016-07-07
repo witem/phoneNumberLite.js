@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/witem/PhoneNumber.js.git"
+    "url": "git+https://github.com/witem/phoneNumberLite.js.git"
   },
   "keywords": [
     "libphonenumber",
