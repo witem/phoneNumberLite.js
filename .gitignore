@@ -1,2 +1,5 @@
 meta/PhoneNumberMetadata.js
 meta/PhoneNumberMetadata.xml
+
+dist/
+node_modules/
