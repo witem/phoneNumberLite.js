@@ -3,6 +3,7 @@
   "version": "0.1.4",
   "description": "JavaScript library to verify and format phone numbers.",
   "main": "index.js",
+  "browser": "dist/bundle.js",
   "scripts": {
     "build": "make",
     "postbuild": "npm test",
