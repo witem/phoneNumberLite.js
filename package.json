@@ -1,6 +1,6 @@
 {
   "name": "phonenumberlite",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JavaScript library to verify and format phone numbers.",
   "main": "index.js",
   "browser": "dist/bundle.js",
