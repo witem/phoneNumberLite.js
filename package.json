@@ -4,17 +4,23 @@
   "description": "JavaScript library to verify and format phone numbers.",
   "main": "index.js",
   "browser": "dist/bundle.js",
+  "files": [
+    "dist",
+    "lib",
+    "index.js"
+  ],
   "scripts": {
     "build": "make",
+    "ci": "npm run build && npm run browser",
     "postbuild": "npm test",
     "browser": "./node_modules/.bin/browserify index.js -o dist/bundle.js",
     "postbrowser": "./node_modules/.bin/uglifyjs dist/bundle.js -c -m -o dist/bundle.min.js",
-    "prepublish": "npm run build && npm run browser",
+    "prepublishOnly": "npm run build && npm run browser",
+    "local-release": "changeset version && changeset publish",
     "test": "make test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/witem/phoneNumberLite.js.git"
+  "engines": {
+    "node": ">=5.0.0"
   },
   "keywords": [
     "libphonenumber",
@@ -25,13 +31,14 @@
   ],
   "author": "Kuzmenko Artem <witem.artem@gmail.com>",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/witem/phoneNumberLite.js.git"
+  },
   "bugs": {
     "url": "https://github.com/witem/PhoneNumber.js/issues"
   },
   "homepage": "https://github.com/witem/PhoneNumber.js#readme",
-  "engines": {
-    "node": ">=5.0.0"
-  },
   "transform": [
     [
       "babelify"
@@ -40,6 +47,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
+    "@changesets/cli": "^2.27.8",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
     "uglify-js": "^3.19.3"
