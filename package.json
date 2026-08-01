@@ -1,6 +1,6 @@
 {
   "name": "phonenumberlite",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "JavaScript library to verify and format phone numbers.",
   "main": "index.js",
   "browser": "dist/bundle.js",
@@ -13,8 +13,8 @@
     "build": "make",
     "ci": "npm run build && npm run browser",
     "postbuild": "npm test",
-    "browser": "./node_modules/.bin/browserify index.js -o dist/bundle.js",
-    "postbrowser": "./node_modules/.bin/uglifyjs dist/bundle.js -c -m -o dist/bundle.min.js",
+    "browser": "browserify index.js -o dist/bundle.js",
+    "postbrowser": "uglifyjs dist/bundle.js -c -m -o dist/bundle.min.js",
     "prepublishOnly": "npm run build && npm run browser",
     "local-release": "changeset version && changeset publish",
     "test": "make test"
